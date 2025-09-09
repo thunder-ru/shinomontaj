@@ -1,3 +1,45 @@
+// Переключение темы
+document.getElementById('theme-toggle').addEventListener('click', function() {
+    const body = document.body;
+    const icon = this.querySelector('i');
+    if (body.classList.contains('light')) {
+        body.classList.replace('light', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('theme', 'dark');
+    } else {
+        body.classList.replace('dark', 'light');
+        icon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('theme', 'light');
+    }
+});
+
+// Установка темы при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.body.classList.add(savedTheme);
+    const icon = document.querySelector('.theme-toggle i');
+    if (savedTheme === 'dark') {
+        icon.classList.replace('fa-moon', 'fa-sun');
+    }
+});
+
+// Тикер клиентов
+function initClientsTicker() {
+    const names = ["Андрей", "Елена", "Максим", "Ольга", "Дмитрий", "Анна", "Сергей", "Юлия"];
+    const times = ["15:00", "16:30", "14:15", "17:45", "13:30", "18:00", "12:45", "19:15"];
+    const tickerContent = document.getElementById('ticker-content');
+    
+    if (tickerContent) {
+        let html = '';
+        for (let i = 0; i < 20; i++) {
+            const name = names[Math.floor(Math.random() * names.length)];
+            const time = times[Math.floor(Math.random() * times.length)];
+            html += `<div>${name} записался на ${time}</div>`;
+        }
+        tickerContent.innerHTML = html;
+    }
+}
+
 // Параллакс
 window.addEventListener('scroll', function() {
     const parallax = document.querySelector('.parallax');
@@ -9,7 +51,7 @@ window.addEventListener('scroll', function() {
 
 // Анимация блоков при скролле
 function animateOnScroll() {
-    const elements = document.querySelectorAll('.step-card, .stat-card');
+    const elements = document.querySelectorAll('.step-card');
     const triggerBottom = window.innerHeight * 0.8;
 
     elements.forEach(el => {
@@ -20,71 +62,24 @@ function animateOnScroll() {
     });
 }
 
-// Анимация статистики
-function animateStats() {
-    const statItems = document.querySelectorAll('.stat-number');
-    statItems.forEach(item => {
-        const target = +item.getAttribute('data-target');
-        let count = 0;
-        const duration = 2000;
-        const step = target / (duration / 16);
+// Счётчик экономии
+function initSavingsCounter() {
+    const counter = document.getElementById('savings-counter');
+    if (!counter) return;
 
-        const timer = setInterval(() => {
-            count += step;
-            if (count >= target) {
-                count = target;
-                clearInterval(timer);
-            }
-            item.textContent = Math.floor(count);
-        }, 16);
-    });
-}
+    let count = 0;
+    const target = 2480000;
+    const duration = 5000;
+    const step = target / (duration / 16);
 
-// Таймер в шапке
-function startHeaderTimer() {
-    const timerElement = document.getElementById('header-timer');
-    if (!timerElement) return;
-
-    function updateTimer() {
-        const now = new Date();
-        const target = new Date();
-        target.setHours(21, 0, 0, 0);
-
-        if (now > target) {
-            timerElement.textContent = "Акция завершена";
-            return;
+    const timer = setInterval(() => {
+        count += step;
+        if (count >= target) {
+            count = target;
+            clearInterval(timer);
         }
-
-        const diff = target - now;
-        const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-        const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-
-        timerElement.textContent = `${hours}:${minutes}:${seconds}`;
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-}
-
-// Мигающая горячая линия
-function initHotlineBlink() {
-    let inactivityTimer;
-    function resetTimer() {
-        clearTimeout(inactivityTimer);
-        const hotline = document.getElementById('hotline-blink');
-        if (hotline) hotline.classList.remove('blink');
-
-        inactivityTimer = setTimeout(() => {
-            if (hotline) hotline.classList.add('blink');
-        }, 5000);
-    }
-
-    ['mousemove', 'keypress', 'touchstart', 'scroll'].forEach(event => {
-        document.addEventListener(event, resetTimer);
-    });
-
-    resetTimer();
+        counter.textContent = Math.floor(count).toLocaleString('ru-RU');
+    }, 16);
 }
 
 // Срочная запись
@@ -118,7 +113,7 @@ function checkUrgentBooking() {
     }
 }
 
-// Онлайн-запись
+// Онлайн-запись (без изменений — всё работает)
 function initBooking() {
     const dateInput = document.getElementById('booking-date');
     const timeSelect = document.getElementById('booking-time');
@@ -323,7 +318,7 @@ document.getElementById('route-btn')?.addEventListener('click', function(e) {
 // Звук при наведении
 document.addEventListener('DOMContentLoaded', function() {
     const clickSound = document.getElementById('click-sound');
-    document.querySelectorAll('.btn, .contact-btn').forEach(btn => {
+    document.querySelectorAll('.btn, .floating-help').forEach(btn => {
         btn.addEventListener('mouseenter', () => {
             clickSound.currentTime = 0;
             clickSound.play().catch(e => console.log("Audio play failed:", e));
@@ -333,24 +328,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Инициализация
 window.addEventListener('DOMContentLoaded', function() {
+    initClientsTicker();
     animateOnScroll();
     window.addEventListener('scroll', animateOnScroll);
-
-    const statsSection = document.querySelector('.why-us');
-    if (statsSection) {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    animateStats();
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        observer.observe(statsSection);
-    }
-
-    startHeaderTimer();
-    initHotlineBlink();
+    initSavingsCounter();
     checkUrgentBooking();
     initBooking();
     updateSlotsCounter();
