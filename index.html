@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шиномонтажка 008 — Запись за 10 сек ⚡ Фикс цена. Гарантия.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Звук для hover -->
+    <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3" preload="auto"></audio>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container header-container">
+            <div class="logo">Шиномонтажка <span>008</span></div>
+            <nav class="nav">
+                <a href="#how-it-works">Как работает</a>
+                <a href="#prices">Цены</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#contact">Контакты</a>
+            </nav>
+            <div class="header-cta">
+                <div class="hotline">
+                    <i class="fas fa-bolt"></i> Горячая линия: <strong>+7 (999) 123-45-67</strong>
+                </div>
+                <a href="https://wa.me/79991234567" class="btn btn-primary" id="main-cta" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Записаться
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой -->
+    <section class="hero">
+        <div class="hero-video-container">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="guarantee-badge">✅ Гарантия 6 месяцев или деньги назад</div>
+            <h1>ШИНОМОНТАЖ ЗА <span>30 МИНУТ</span></h1>
+            <p class="subtitle">Фикс цена. Без очередей. Кофе в подарок.</p>
+            <div class="price-tag">от 800 ₽</div>
+            <div class="slots-box">
+                <i class="fas fa-ticket-alt"></i> Свободные слоты сегодня: <strong id="slots-counter">3</strong> места
+            </div>
+            <a href="https://wa.me/79991234567" class="btn btn-hero" target="_blank">
+                <i class="fab fa-whatsapp"></i> Записаться за 10 секунд
+            </a>
+        </div>
+    </section>
+
+    <!-- Как это работает -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <h2 class="section-title">Как это работает?</h2>
+            <div class="steps-grid">
+                <div class="step-item">
+                    <div class="step-icon">1</div>
+                    <h3>Нажмите “Записаться”</h3>
+                    <p>Напишите в WhatsApp — мы ответим за 20 секунд.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">2</div>
+                    <h3>Приезжайте в назначенное время</h3>
+                    <p>Никаких очередей — вы в приоритете.</p>
+                </div>
+                <div class="step-item">
+                    <div class="step-icon">3</div>
+                    <h3>Пейте кофе — мы всё сделаем за 30 минут</h3>
+                    <p>Получите гарантию и чек.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цены -->
+    <section class="prices" id="prices">
+        <div class="container">
+            <h2 class="section-title">Цены</h2>
+            <div class="prices-grid">
+                <div class="price-card">
+                    <h3>Шиномонтаж</h3>
+                    <div class="price">800 ₽</div>
+                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                </div>
+                <div class="price-card">
+                    <h3>Балансировка</h3>
+                    <div class="price">500 ₽</div>
+                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                </div>
+                <div class="price-card">
+                    <h3>Ремонт прокола</h3>
+                    <div class="price">300 ₽</div>
+                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                </div>
+                <div class="price-card">
+                    <h3>Хранение шин</h3>
+                    <div class="price">1500 ₽/сезон</div>
+                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Реальные клиенты — реальные цены</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="car-photo">
+                        <img src="https://images.unsplash.com/photo-1583121274694-2d84aabe0633?auto=format&fit=crop&w=300" alt="Toyota Camry">
+                    </div>
+                    <div class="review-text">
+                        <strong>Андрей, Toyota Camry</strong>
+                        <p>Записался через WhatsApp — приехал через 20 минут. Сделали за 28 минут. Цена: 1200₽. Дали гарантию. 👍</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="car-photo">
+                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=300" alt="BMW X5">
+                    </div>
+                    <div class="review-text">
+                        <strong>Елена, BMW X5</strong>
+                        <p>Поменяли резину + балансировка. Всё чисто, быстро. Цена: 2500₽. Кофе и Wi-Fi в зоне ожидания. Рекомендую!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact" id="contact">
+        <div class="container contact-wrapper">
+            <div class="contact-info">
+                <h2>📍 Мы на Колесной, 8</h2>
+                <p>Работаем ежедневно с 8:00 до 22:00</p>
+                <a href="#" class="btn btn-map" id="build-route">Построить маршрут</a>
+                <div class="contact-methods">
+                    <a href="tel:+79991234567" class="method-item">
+                        <i class="fas fa-phone"></i> +7 (999) 123-45-67
+                    </a>
+                    <a href="https://wa.me/79991234567" class="method-item" target="_blank">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </a>
+                    <a href="https://t.me/yourtelegram" class="method-item" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram
+                    </a>
+                </div>
+            </div>
+            <div class="contact-map">
+                <div class="map-placeholder">
+                    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A1234567890abcdef1234567890abcdef1234567890abcdef&source=constructor" width="100%" height="300" frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    Шиномонтажка <span>008</span>
+                </div>
+                <a href="https://wa.me/79991234567" class="btn btn-footer" target="_blank">
+                    📲 Записаться в WhatsApp — мест осталось мало!
+                </a>
+                <p class="footer-note">Фикс цена. Гарантия 6 месяцев. Работаем до 22:00.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Onboarding подсветка -->
+    <div class="onboarding-tooltip" id="onboarding" style="display:none;">
+        <p>Нажмите здесь, чтобы записаться за 10 секунд →</p>
+        <div class="arrow"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
