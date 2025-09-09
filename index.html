@@ -20,6 +20,7 @@
             <div class="logo">Шиномонтажка <span>008</span></div>
             <nav class="nav">
                 <a href="#how-it-works">Как работает</a>
+                <a href="#why-us">Почему мы</a>
                 <a href="#prices">Цены</a>
                 <a href="#reviews">Отзывы</a>
                 <a href="#booking">Записаться</a>
@@ -27,6 +28,9 @@
             <div class="header-cta">
                 <div class="promo-timer">
                     <i class="fas fa-fire"></i> Акция до: <span id="header-timer">21:00:00</span>
+                </div>
+                <div class="hotline" id="hotline-blink">
+                    <i class="fas fa-phone-alt"></i> Горячая линия: <strong>+7 (999) 123-45-67</strong>
                 </div>
                 <a href="#booking" class="btn btn-neon" id="main-cta">
                     <i class="far fa-calendar-alt"></i> Онлайн-запись
@@ -77,6 +81,59 @@
             </div>
             <div id="urgent-booking" style="display:none; margin-top:20px;" class="urgent-box">
                 <i class="fas fa-bolt"></i> Свободен прямо сейчас — <a href="#booking" class="btn btn-urgent">Записаться за 1 клик</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Почему выбирают нас -->
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2 class="section-title">Почему нас выбирают?</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-number" data-target="5000">0</div>
+                    <div class="stat-label">довольных клиентов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">% гарантия результата</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-number" data-target="30">0</div>
+                    <div class="stat-label">минут — среднее время</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-history"></i>
+                    </div>
+                    <div class="stat-number" data-target="10">0</div>
+                    <div class="stat-label">лет на рынке</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Гарантия возврата -->
+    <section class="money-back">
+        <div class="container">
+            <div class="money-back-content">
+                <div class="money-back-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="money-back-text">
+                    <h3>Гарантия возврата денег</h3>
+                    <p>Если вам не понравится результат — вернём деньги. Без вопросов. В течение 7 дней.</p>
+                </div>
+                <a href="#booking" class="btn btn-outline">Записаться без риска</a>
             </div>
         </div>
     </section>
@@ -278,6 +335,7 @@
                 </div>
                 <div class="footer-links">
                     <a href="#how-it-works">Как работает</a>
+                    <a href="#why-us">Почему мы</a>
                     <a href="#prices">Цены</a>
                     <a href="#reviews">Отзывы</a>
                     <a href="#contact">Контакты</a>
@@ -292,6 +350,19 @@
             </div>
         </div>
     </footer>
+
+    <!-- Попап "Спасибо" -->
+    <div class="popup-thankyou" id="popup-thankyou" style="display:none;">
+        <div class="popup-content">
+            <div class="popup-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Спасибо за запись!</h3>
+            <p>Мы ждём вас <span id="thankyou-date"></span> в <span id="thankyou-time"></span>.</p>
+            <p>Пожалуйста, оставьте отзыв после посещения — нам очень важно ваше мнение!</p>
+            <button class="btn btn-neon" id="close-thankyou">Закрыть</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
