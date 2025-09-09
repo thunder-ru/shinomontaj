@@ -7,20 +7,20 @@
 :root {
     --primary: #e63946;
     --neon: #ff2a6d;
-    --dark: #0d1117;
-    --darker: #070b0f;
-    --light: #e5e5e5;
-    --gray: #888;
+    --dark: #1a1a2e;
+    --darker: #16213e;
+    --light: #f8f9fa;
+    --gray: #6c757d;
     --success: #05d9e8;
+    --accent: #ff9e00;
 }
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background: var(--darker);
-    color: white;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    color: #333;
     line-height: 1.6;
     overflow-x: hidden;
-    background: radial-gradient(circle at top, #1a1a2e 0%, #16213e 100%);
 }
 
 .container {
@@ -32,7 +32,7 @@ body {
 
 /* Шапка */
 .header {
-    background: rgba(13, 17, 23, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
@@ -40,7 +40,8 @@ body {
     width: 100%;
     z-index: 1000;
     padding: 20px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
 }
 .header-container {
     display: flex;
@@ -51,15 +52,13 @@ body {
 .logo {
     font-size: 28px;
     font-weight: 900;
-    background: linear-gradient(45deg, #e63946, #ff2a6d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--darker);
 }
 .logo span {
-    color: #ff2a6d;
+    color: var(--primary);
 }
 .nav a {
-    color: white;
+    color: var(--darker);
     text-decoration: none;
     margin: 0 15px;
     font-weight: 600;
@@ -67,7 +66,7 @@ body {
     transition: all 0.3s;
 }
 .nav a:hover {
-    color: var(--neon);
+    color: var(--primary);
 }
 .nav a:after {
     content: '';
@@ -76,7 +75,7 @@ body {
     left: 0;
     width: 0;
     height: 2px;
-    background: var(--neon);
+    background: var(--primary);
     transition: width 0.3s;
 }
 .nav a:hover:after {
@@ -88,13 +87,29 @@ body {
     align-items: flex-end;
 }
 .promo-timer {
-    color: #05d9e8;
+    color: var(--accent);
+    font-size: 14px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 700;
+}
+.hotline {
+    color: var(--primary);
     font-size: 14px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
-    font-weight: 700;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.hotline.blink {
+    animation: blink 1.5s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0.6; }
 }
 .btn {
     padding: 12px 25px;
@@ -107,33 +122,32 @@ body {
     transition: all 0.3s;
     border: none;
     cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .btn-neon {
     background: linear-gradient(45deg, var(--primary), var(--neon));
     color: white;
-    box-shadow: 0 0 15px rgba(255, 42, 109, 0.5);
 }
 .btn-neon:hover {
-    box-shadow: 0 0 25px rgba(255, 42, 109, 0.8);
     transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(230, 57, 70, 0.3);
 }
 .btn-glow {
-    background: linear-gradient(45deg, #05d9e8, #05a8e8);
+    background: linear-gradient(45deg, var(--success), #05a8e8);
     color: white;
-    box-shadow: 0 0 20px rgba(5, 217, 232, 0.5);
 }
 .btn-glow:hover {
-    box-shadow: 0 0 30px rgba(5, 217, 232, 0.8);
     transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(5, 217, 232, 0.3);
 }
 .btn-outline {
     background: transparent;
-    color: white;
-    border: 2px solid var(--neon);
+    color: var(--primary);
+    border: 2px solid var(--primary);
 }
 .btn-outline:hover {
-    background: var(--neon);
-    color: var(--darker);
+    background: var(--primary);
+    color: white;
 }
 .btn-block {
     width: 100%;
@@ -155,6 +169,7 @@ body {
     font-size: 1.2rem;
     text-decoration: none;
     transition: all 0.3s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 .contact-btn.whatsapp {
     background: #25D366;
@@ -166,7 +181,7 @@ body {
 }
 .contact-btn:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 /* Герой */
@@ -207,7 +222,7 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(13,17,23,0.7) 0%, rgba(22,33,62,0.9) 100%);
+    background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.8) 100%);
     z-index: -1;
 }
 .hero-content {
@@ -216,9 +231,9 @@ body {
     padding: 0 20px;
 }
 .badge-guarantee {
-    background: rgba(5, 217, 232, 0.15);
-    color: #05d9e8;
-    border: 1px solid #05d9e8;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
     display: inline-block;
     padding: 8px 20px;
     border-radius: 50px;
@@ -227,19 +242,16 @@ body {
     font-size: 1.1rem;
     letter-spacing: 1px;
     text-transform: uppercase;
-    box-shadow: 0 0 15px rgba(5, 217, 232, 0.3);
 }
 .hero h1 {
     font-size: 4rem;
     font-weight: 900;
     margin-bottom: 20px;
     line-height: 1.1;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
 }
 .hero h1 span {
-    background: linear-gradient(45deg, var(--primary), var(--neon));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ff2a6d;
     display: block;
     font-size: 3.5rem;
 }
@@ -247,10 +259,11 @@ body {
     font-size: 1.8rem;
     font-weight: 700;
     margin-bottom: 30px;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.2);
     display: inline-block;
     padding: 15px 30px;
     border-radius: 50px;
+    color: white;
 }
 .price-display {
     font-size: 3rem;
@@ -259,21 +272,18 @@ body {
     color: white;
 }
 .price-display span {
-    background: linear-gradient(45deg, var(--primary), var(--neon));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #ff2a6d;
 }
 .slots-counter {
-    background: rgba(230, 57, 70, 0.15);
-    color: #e63946;
-    border: 1px solid #e63946;
+    background: rgba(230, 57, 70, 0.3);
+    color: white;
+    border: 1px solid rgba(230, 57, 70, 0.5);
     display: inline-block;
     padding: 12px 25px;
     border-radius: 50px;
     margin-bottom: 40px;
     font-weight: 700;
     font-size: 1.2rem;
-    box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
 }
 .slots-counter i {
     margin-right: 10px;
@@ -287,6 +297,7 @@ body {
 .hero-contacts p {
     margin-bottom: 15px;
     opacity: 0.9;
+    color: rgba(255,255,255,0.9);
 }
 .hero-contact-buttons {
     display: flex;
@@ -303,29 +314,102 @@ body {
     color: white;
 }
 
-/* Как это работает */
-.how-it-works {
-    padding: 120px 0;
-    background: var(--dark);
+/* Почему выбирают нас */
+.why-us {
+    padding: 100px 0;
+    background: white;
 }
 .section-title {
     text-align: center;
-    font-size: 2.8rem;
+    font-size: 2.5rem;
     font-weight: 900;
-    margin-bottom: 70px;
-    background: linear-gradient(45deg, #e63946, #ff2a6d);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    margin-bottom: 60px;
+    color: var(--darker);
     position: relative;
 }
 .section-title:after {
     content: '';
     display: block;
-    width: 100px;
+    width: 80px;
     height: 4px;
     background: linear-gradient(45deg, var(--primary), var(--neon));
     margin: 15px auto 0;
     border-radius: 2px;
+}
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+.stat-card {
+    background: #f8f9fa;
+    padding: 40px 20px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    transition: all 0.3s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+.stat-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+.stat-icon {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neon);
+    display: block;
+    margin-bottom: 10px;
+}
+.stat-label {
+    font-size: 1.1rem;
+    color: var(--gray);
+}
+
+/* Гарантия возврата */
+.money-back {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
+    text-align: center;
+}
+.money-back-content {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(230, 57, 70, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.money-back-icon {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 20px;
+}
+.money-back-text h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--darker);
+}
+.money-back-text p {
+    font-size: 1.2rem;
+    color: var(--gray);
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+/* Как это работает */
+.how-it-works {
+    padding: 100px 0;
+    background: #f8f9fa;
 }
 .steps-grid {
     display: grid;
@@ -333,12 +417,11 @@ body {
     gap: 40px;
 }
 .step-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
+    background: white;
     padding: 40px 30px;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(30px);
@@ -350,9 +433,9 @@ body {
 .step-icon {
     width: 80px;
     height: 80px;
-    background: rgba(255, 42, 109, 0.1);
-    border: 2px solid var(--neon);
-    color: var(--neon);
+    background: rgba(230, 57, 70, 0.1);
+    border: 2px solid var(--primary);
+    color: var(--primary);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -370,12 +453,12 @@ body {
 }
 .step-card:hover .icon-animate {
     transform: scale(1.2) rotate(15deg);
-    color: #ff2a6d;
+    color: var(--neon);
 }
 .step-card h3 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: white;
+    color: var(--darker);
 }
 .step-card p {
     color: var(--gray);
@@ -384,8 +467,8 @@ body {
 
 /* Цены */
 .prices {
-    padding: 120px 0;
-    background: var(--darker);
+    padding: 100px 0;
+    background: white;
 }
 .prices-grid {
     display: grid;
@@ -393,18 +476,16 @@ body {
     gap: 30px;
 }
 .price-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(5px);
+    background: #f8f9fa;
     padding: 40px 25px;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
     transition: all 0.4s ease;
 }
 .price-card:hover {
-    transform: translateY(-15px);
-    border-color: var(--neon);
-    box-shadow: 0 20px 40px rgba(255, 42, 109, 0.2);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(230, 57, 70, 0.15);
 }
 .price-top {
     margin-bottom: 20px;
@@ -412,14 +493,12 @@ body {
 .price-card h3 {
     font-size: 1.4rem;
     margin-bottom: 15px;
-    color: white;
+    color: var(--darker);
 }
 .price-tag {
     font-size: 2.2rem;
     font-weight: 800;
-    background: linear-gradient(45deg, var(--primary), var(--neon));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--primary);
     display: inline-block;
 }
 .price-sub {
@@ -435,8 +514,8 @@ body {
 
 /* Онлайн-запись */
 .booking-section {
-    padding: 120px 0;
-    background: var(--dark);
+    padding: 100px 0;
+    background: #f8f9fa;
 }
 .booking-container {
     display: grid;
@@ -445,10 +524,10 @@ body {
     align-items: start;
 }
 .booking-form {
-    background: rgba(255, 255, 255, 0.03);
+    background: white;
     padding: 40px;
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 .form-group {
     margin-bottom: 25px;
@@ -457,16 +536,16 @@ body {
     display: block;
     margin-bottom: 10px;
     font-weight: 600;
-    color: white;
+    color: var(--darker);
 }
 .form-group input,
 .form-group select {
     width: 100%;
     padding: 15px;
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    color: white;
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    color: var(--darker);
     font-size: 16px;
 }
 .form-group input::placeholder,
@@ -481,7 +560,7 @@ body {
 .booking-info h3 {
     font-size: 1.8rem;
     margin-bottom: 25px;
-    color: white;
+    color: var(--darker);
 }
 .booking-info ul {
     list-style: none;
@@ -499,26 +578,26 @@ body {
     padding: 15px;
     border-radius: 10px;
     font-size: 0.9rem;
-    color: #05d9e8;
+    color: var(--success);
     display: flex;
     align-items: center;
     gap: 10px;
 }
 #booking-result.success {
     background: rgba(5, 217, 232, 0.15);
-    color: #05d9e8;
-    border: 1px solid #05d9e8;
+    color: var(--success);
+    border: 1px solid var(--success);
 }
 #booking-result.error {
     background: rgba(230, 57, 70, 0.15);
-    color: #e63946;
-    border: 1px solid #e63946;
+    color: var(--primary);
+    border: 1px solid var(--primary);
 }
 
 /* Спиннер */
 .spinner {
-    border: 3px solid rgba(255,255,255,0.3);
-    border-top: 3px solid #05d9e8;
+    border: 3px solid rgba(0,0,0,0.1);
+    border-top: 3px solid var(--success);
     border-radius: 50%;
     width: 20px;
     height: 20px;
@@ -533,27 +612,25 @@ body {
 
 /* VIP бейдж */
 #hot-badge {
-    background: linear-gradient(45deg, #ff2a6d, #fb5607);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--accent);
     font-weight: 800;
     margin-left: 10px;
 }
 
 /* Срочная запись */
 .urgent-box {
-    background: rgba(255, 42, 109, 0.15);
+    background: rgba(230, 57, 70, 0.1);
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid #ff2a6d;
+    border: 1px solid var(--primary);
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #ff2a6d;
+    color: var(--primary);
     font-weight: 700;
 }
 .btn-urgent {
-    background: #ff2a6d;
+    background: var(--primary);
     color: white;
     padding: 8px 15px;
     border-radius: 50px;
@@ -563,13 +640,13 @@ body {
 }
 .btn-urgent:hover {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(255, 42, 109, 0.4);
+    box-shadow: 0 5px 15px rgba(230, 57, 70, 0.3);
 }
 
 /* Отзывы */
 .reviews {
-    padding: 120px 0;
-    background: var(--darker);
+    padding: 100px 0;
+    background: white;
 }
 .reviews-slider {
     display: grid;
@@ -577,15 +654,15 @@ body {
     gap: 30px;
 }
 .review-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
     border-radius: 20px;
     padding: 30px;
     transition: all 0.3s;
 }
 .review-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--neon);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 .review-header {
     display: flex;
@@ -597,11 +674,11 @@ body {
     height: 50px;
     border-radius: 50%;
     margin-right: 15px;
-    border: 2px solid var(--neon);
+    border: 2px solid var(--primary);
 }
 .review-header strong {
     font-size: 1.2rem;
-    color: white;
+    color: var(--darker);
 }
 .stars {
     color: gold;
@@ -624,7 +701,7 @@ body {
 /* Контакты */
 .contact {
     padding: 100px 0;
-    background: var(--dark);
+    background: #f8f9fa;
 }
 .contact-wrapper {
     display: grid;
@@ -635,21 +712,22 @@ body {
 .contact-info h2 {
     font-size: 2rem;
     margin-bottom: 15px;
-    color: var(--neon);
+    color: var(--primary);
 }
 .contact-info p {
     margin-bottom: 25px;
     font-size: 1.1rem;
-    color: white;
+    color: var(--darker);
 }
 .contact-info .btn {
     margin-top: 20px;
 }
 .contact-map .map-placeholder {
-    background: rgba(255, 255, 255, 0.05);
+    background: white;
     border-radius: 15px;
     overflow: hidden;
     height: 300px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 .contact-map iframe {
     border: none;
@@ -659,10 +737,11 @@ body {
 
 /* Футер */
 .footer {
-    background: linear-gradient(135deg, var(--darker), #0a0f1c);
+    background: var(--darker);
+    color: white;
     padding: 80px 0 40px;
     text-align: center;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255,255,255,0.1);
 }
 .footer-content {
     max-width: 800px;
@@ -671,13 +750,11 @@ body {
 .footer-logo {
     font-size: 32px;
     font-weight: 900;
-    background: linear-gradient(45deg, var(--primary), var(--neon));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: white;
     margin-bottom: 30px;
 }
 .footer-logo span {
-    color: #ff2a6d;
+    color: var(--neon);
 }
 .btn-lg {
     padding: 15px 40px;
@@ -701,7 +778,7 @@ body {
     margin: 40px 0;
 }
 .footer-links a {
-    color: var(--gray);
+    color: rgba(255,255,255,0.7);
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
@@ -716,7 +793,7 @@ body {
     margin: 30px 0;
 }
 .footer-socials a {
-    color: var(--gray);
+    color: rgba(255,255,255,0.7);
     font-size: 1.5rem;
     transition: color 0.3s;
 }
@@ -725,8 +802,67 @@ body {
 }
 .footer-note {
     font-size: 0.9rem;
-    color: var(--gray);
+    color: rgba(255,255,255,0.7);
     margin-top: 30px;
+}
+
+/* Попап "Спасибо" */
+.popup-thankyou {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.5s ease;
+}
+.popup-content {
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 500px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    animation: slideUp 0.5s ease;
+}
+.popup-icon {
+    font-size: 5rem;
+    color: var(--success);
+    margin-bottom: 20px;
+}
+.popup-content h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--darker);
+}
+.popup-content p {
+    font-size: 1.1rem;
+    color: var(--gray);
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+#close-thankyou {
+    padding: 15px 40px;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Адаптив */
