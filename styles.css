@@ -87,13 +87,14 @@ body {
     flex-direction: column;
     align-items: flex-end;
 }
-.hotline {
+.promo-timer {
     color: #05d9e8;
     font-size: 14px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 5px;
+    font-weight: 700;
 }
 .btn {
     padding: 12px 25px;
@@ -306,9 +307,16 @@ body {
     margin: 0 auto 25px;
     transition: all 0.3s;
 }
-.step-card:hover .step-icon {
-    transform: rotate(10deg) scale(1.1);
-    box-shadow: 0 0 30px rgba(255, 42, 109, 0.4);
+.icon-animate {
+    font-size: 2.5rem;
+    transition: all 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.step-card:hover .icon-animate {
+    transform: scale(1.2) rotate(15deg);
+    color: #ff2a6d;
 }
 .step-card h3 {
     font-size: 1.5rem;
@@ -451,6 +459,57 @@ body {
     background: rgba(230, 57, 70, 0.15);
     color: #e63946;
     border: 1px solid #e63946;
+}
+
+/* Спиннер */
+.spinner {
+    border: 3px solid rgba(255,255,255,0.3);
+    border-top: 3px solid #05d9e8;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* VIP бейдж */
+#hot-badge {
+    background: linear-gradient(45deg, #ff2a6d, #fb5607);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+/* Срочная запись */
+.urgent-box {
+    background: rgba(255, 42, 109, 0.15);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ff2a6d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #ff2a6d;
+    font-weight: 700;
+}
+.btn-urgent {
+    background: #ff2a6d;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.btn-urgent:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 42, 109, 0.4);
 }
 
 /* Отзывы */
