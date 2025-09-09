@@ -1,11 +1,38 @@
-// Плавающая кнопка — звук при наведении
-document.querySelectorAll('.floating-help, .btn').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        const sound = document.getElementById('click-sound');
-        sound.currentTime = 0;
-        sound.play().catch(e => console.log("Audio play failed:", e));
-    });
-});
+// Погода в Королёве
+async function loadWeather() {
+    try {
+        // Используем OpenWeatherMap (замените YOUR_API_KEY)
+        const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=Korolyov,RU&units=metric&lang=ru&appid=YOUR_API_KEY');
+        const data = await response.json();
+        const temp = Math.round(data.main.temp);
+        const desc = data.weather[0].description;
+        document.getElementById('weather-text').textContent = `Сегодня ${temp}°C, ${desc}`;
+    } catch (error) {
+        document.getElementById('weather-text').textContent = "Погода недоступна";
+    }
+}
+
+// Прогресс-бар экономии
+function initSavingsCounter() {
+    const counter = document.getElementById('savings-counter');
+    const progressFill = document.getElementById('progress-fill');
+    if (!counter || !progressFill) return;
+
+    let count = 0;
+    const target = 2480000;
+    const duration = 3000;
+    const step = target / (duration / 16);
+
+    const timer = setInterval(() => {
+        count += step;
+        if (count >= target) {
+            count = target;
+            clearInterval(timer);
+        }
+        counter.textContent = Math.floor(count).toLocaleString('ru-RU');
+        progressFill.style.width = `${(count / target) * 100}%`;
+    }, 16);
+}
 
 // Слоты
 function updateSlotsCounter() {
@@ -33,7 +60,7 @@ function updateSlotsCounter() {
     }
 }
 
-// Генерация слотов
+// Онлайн-запись
 function initBooking() {
     const dateInput = document.getElementById('booking-date');
     const timeSelect = document.getElementById('booking-time');
@@ -137,10 +164,43 @@ document.getElementById('route-btn')?.addEventListener('click', function(e) {
     } else {
         alert('Геолокация не поддерживается вашим браузером.');
     }
+}
+
+// Easter Egg — 5 кликов по логотипу
+let clickCount = 0;
+let lastClickTime = 0;
+document.getElementById('logo-easter')?.addEventListener('click', function() {
+    const now = Date.now();
+    if (now - lastClickTime < 500) {
+        clickCount++;
+    } else {
+        clickCount = 1;
+    }
+    lastClickTime = now;
+
+    if (clickCount >= 5) {
+        document.getElementById('easter-popup').style.display = 'flex';
+        clickCount = 0;
+    }
+});
+
+document.querySelector('.close-easter')?.addEventListener('click', function() {
+    document.getElementById('easter-popup').style.display = 'none';
+});
+
+// Звук при наведении
+document.querySelectorAll('.btn, .floating-help, .price-card, .master-card').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        const sound = document.getElementById('hover-sound');
+        sound.currentTime = 0;
+        sound.play().catch(e => console.log("Audio play failed:", e));
+    });
 });
 
 // Инициализация
 document.addEventListener('DOMContentLoaded', function() {
+    loadWeather();
+    initSavingsCounter();
     updateSlotsCounter();
     initBooking();
 });
