@@ -465,4 +465,189 @@ body {
 }
 .review-card {
     background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255,
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    padding: 30px;
+    transition: all 0.3s;
+}
+.review-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--neon);
+}
+.review-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.review-header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 15px;
+    border: 2px solid var(--neon);
+}
+.review-header strong {
+    font-size: 1.2rem;
+    color: white;
+}
+.stars {
+    color: gold;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.car-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 20px 0;
+}
+.review-card p {
+    color: var(--gray);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Контакты */
+.contact {
+    padding: 100px 0;
+    background: var(--dark);
+}
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+.contact-info h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: var(--neon);
+}
+.contact-info p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: white;
+}
+.contact-info .btn {
+    margin-top: 20px;
+}
+.contact-map .map-placeholder {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    overflow: hidden;
+    height: 300px;
+}
+.contact-map iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* Футер */
+.footer {
+    background: linear-gradient(135deg, var(--darker), #0a0f1c);
+    padding: 80px 0 40px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.footer-logo {
+    font-size: 32px;
+    font-weight: 900;
+    background: linear-gradient(45deg, var(--primary), var(--neon));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 30px;
+}
+.footer-logo span {
+    color: #ff2a6d;
+}
+.btn-lg {
+    padding: 15px 40px;
+    font-size: 1.2rem;
+}
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 40px 0;
+}
+.footer-links a {
+    color: var(--gray);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.footer-links a:hover {
+    color: var(--neon);
+}
+.footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px 0;
+}
+.footer-socials a {
+    color: var(--gray);
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+.footer-socials a:hover {
+    color: var(--neon);
+}
+.footer-note {
+    font-size: 0.9rem;
+    color: var(--gray);
+    margin-top: 30px;
+}
+
+/* Адаптив */
+@media (max-width: 992px) {
+    .hero h1 {
+        font-size: 3.2rem;
+    }
+    .hero h1 span {
+        font-size: 2.8rem;
+    }
+    .booking-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav {
+        margin: 20px 0;
+    }
+    .hero {
+        padding-top: 120px;
+    }
+    .hero h1 {
+        font-size: 2.8rem;
+    }
+    .hero h1 span {
+        font-size: 2.4rem;
+    }
+    .subtitle {
+        font-size: 1.4rem;
+    }
+    .price-display {
+        font-size: 2.5rem;
+    }
+    .section-title {
+        font-size: 2.2rem;
+    }
+    .review-card {
+        padding: 25px;
+    }
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+}
