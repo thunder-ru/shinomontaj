@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шиномонтажка 008 — Запись за 10 сек ⚡ Фикс цена. Гарантия.</title>
+    <title>Шиномонтажка 008 — Запись онлайн ⚡ Гарантия. Фикс цена.</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 
-    <!-- Звук для hover -->
-    <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3" preload="auto"></audio>
+    <!-- Звук -->
+    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3" preload="auto"></audio>
 
     <!-- Шапка -->
     <header class="header">
@@ -21,14 +21,14 @@
                 <a href="#how-it-works">Как работает</a>
                 <a href="#prices">Цены</a>
                 <a href="#reviews">Отзывы</a>
-                <a href="#contact">Контакты</a>
+                <a href="#booking">Записаться</a>
             </nav>
             <div class="header-cta">
                 <div class="hotline">
-                    <i class="fas fa-bolt"></i> Горячая линия: <strong>+7 (999) 123-45-67</strong>
+                    <i class="fas fa-bolt"></i> <strong>+7 (999) 123-45-67</strong>
                 </div>
-                <a href="https://wa.me/79991234567" class="btn btn-primary" id="main-cta" target="_blank">
-                    <i class="fab fa-whatsapp"></i> Записаться
+                <a href="#booking" class="btn btn-neon" id="main-cta">
+                    <i class="far fa-calendar-alt"></i> Онлайн-запись
                 </a>
             </div>
         </div>
@@ -36,22 +36,24 @@
 
     <!-- Герой -->
     <section class="hero">
-        <div class="hero-video-container">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
-        <div class="container hero-content">
-            <div class="guarantee-badge">✅ Гарантия 6 месяцев или деньги назад</div>
-            <h1>ШИНОМОНТАЖ ЗА <span>30 МИНУТ</span></h1>
-            <p class="subtitle">Фикс цена. Без очередей. Кофе в подарок.</p>
-            <div class="price-tag">от 800 ₽</div>
-            <div class="slots-box">
-                <i class="fas fa-ticket-alt"></i> Свободные слоты сегодня: <strong id="slots-counter">3</strong> места
+        <div class="parallax">
+            <div class="hero-video-container">
+                <video autoplay muted loop playsinline>
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
+                </video>
             </div>
-            <a href="https://wa.me/79991234567" class="btn btn-hero" target="_blank">
-                <i class="fab fa-whatsapp"></i> Записаться за 10 секунд
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="badge-guarantee">ГАРАНТИЯ 6 МЕСЯЦЕВ</div>
+            <h1>ШИНОМОНТАЖ<br><span>ЗА 30 МИНУТ</span></h1>
+            <p class="subtitle">Фикс цена. Никаких очередей. Кофе в подарок.</p>
+            <div class="price-display">от <span>800 ₽</span></div>
+            <div class="slots-counter">
+                <i class="fas fa-stopwatch"></i> Свободных слотов сегодня: <span id="realtime-slots">3</span>
+            </div>
+            <a href="#booking" class="btn btn-glow">
+                <i class="far fa-calendar-alt"></i> Забронировать время
             </a>
         </div>
     </section>
@@ -61,20 +63,20 @@
         <div class="container">
             <h2 class="section-title">Как это работает?</h2>
             <div class="steps-grid">
-                <div class="step-item">
-                    <div class="step-icon">1</div>
-                    <h3>Нажмите “Записаться”</h3>
-                    <p>Напишите в WhatsApp — мы ответим за 20 секунд.</p>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-comment-dots"></i></div>
+                    <h3>Выберите дату и время</h3>
+                    <p>Онлайн — без звонков и ожидания.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-icon">2</div>
-                    <h3>Приезжайте в назначенное время</h3>
-                    <p>Никаких очередей — вы в приоритете.</p>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-car"></i></div>
+                    <h3>Приезжайте точно в срок</h3>
+                    <p>Вас встретят — без очереди.</p>
                 </div>
-                <div class="step-item">
-                    <div class="step-icon">3</div>
-                    <h3>Пейте кофе — мы всё сделаем за 30 минут</h3>
-                    <p>Получите гарантию и чек.</p>
+                <div class="step-card">
+                    <div class="step-icon"><i class="fas fa-coffee"></i></div>
+                    <h3>Пейте кофе — мы сделаем всё за 30 минут</h3>
+                    <p>Получите чек и гарантию.</p>
                 </div>
             </div>
         </div>
@@ -86,24 +88,82 @@
             <h2 class="section-title">Цены</h2>
             <div class="prices-grid">
                 <div class="price-card">
-                    <h3>Шиномонтаж</h3>
-                    <div class="price">800 ₽</div>
-                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                    <div class="price-top">
+                        <h3>Шиномонтаж</h3>
+                        <div class="price-tag">800 ₽</div>
+                    </div>
+                    <p>Всё включено: снятие, установка, вентили.</p>
+                    <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <h3>Балансировка</h3>
-                    <div class="price">500 ₽</div>
-                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                    <div class="price-top">
+                        <h3>Балансировка</h3>
+                        <div class="price-tag">500 ₽</div>
+                    </div>
+                    <p>На современном стенде Hunter.</p>
+                    <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <h3>Ремонт прокола</h3>
-                    <div class="price">300 ₽</div>
-                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                    <div class="price-top">
+                        <h3>Ремонт прокола</h3>
+                        <div class="price-tag">300 ₽</div>
+                    </div>
+                    <p>Гарантия на ремонт — 6 месяцев.</p>
+                    <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <h3>Хранение шин</h3>
-                    <div class="price">1500 ₽/сезон</div>
-                    <a href="https://wa.me/79991234567" class="btn btn-outline">Записаться</a>
+                    <div class="price-top">
+                        <h3>Хранение шин</h3>
+                        <div class="price-tag">1500 ₽</div>
+                        <div class="price-sub">/сезон</div>
+                    </div>
+                    <p>Склад с климат-контролем и фотоотчётами.</p>
+                    <a href="#booking" class="btn btn-outline">Записаться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Онлайн-запись -->
+    <section class="booking-section" id="booking">
+        <div class="container">
+            <h2 class="section-title">Онлайн-запись</h2>
+            <div class="booking-container">
+                <div class="booking-form">
+                    <div class="form-group">
+                        <label>Выберите дату</label>
+                        <input type="date" id="booking-date" min="" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Выберите время</label>
+                        <select id="booking-time" required>
+                            <option value="">— Выберите время —</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваше имя</label>
+                        <input type="text" id="booking-name" placeholder="Иван" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Ваш телефон</label>
+                        <input type="tel" id="booking-phone" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    <button id="booking-submit" class="btn btn-neon btn-block">
+                        <i class="fas fa-check-circle"></i> Забронировать
+                    </button>
+                    <div id="booking-result" style="display:none; margin-top:20px; padding:15px; border-radius:10px;"></div>
+                </div>
+                <div class="booking-info">
+                    <h3>Почему онлайн?</h3>
+                    <ul>
+                        <li>✅ Никаких очередей — вы в приоритете</li>
+                        <li>✅ Фиксируем цену — без скрытых платежей</li>
+                        <li>✅ Напомним за час — не забудете</li>
+                        <li>✅ Гарантия 6 месяцев на все работы</li>
+                    </ul>
+                    <div class="info-note">
+                        <i class="fas fa-shield-alt"></i> Ваши данные защищены. Не передаются третьим лицам.
+                    </div>
                 </div>
             </div>
         </div>
@@ -112,48 +172,42 @@
     <!-- Отзывы -->
     <section class="reviews" id="reviews">
         <div class="container">
-            <h2 class="section-title">Реальные клиенты — реальные цены</h2>
-            <div class="reviews-grid">
+            <h2 class="section-title">Отзывы клиентов</h2>
+            <div class="reviews-slider">
                 <div class="review-card">
-                    <div class="car-photo">
-                        <img src="https://images.unsplash.com/photo-1583121274694-2d84aabe0633?auto=format&fit=crop&w=300" alt="Toyota Camry">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=7" alt="Анна">
+                        <div>
+                            <strong>Анна</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-text">
-                        <strong>Андрей, Toyota Camry</strong>
-                        <p>Записался через WhatsApp — приехал через 20 минут. Сделали за 28 минут. Цена: 1200₽. Дали гарантию. 👍</p>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=300&q=80" alt="BMW X5" class="car-image">
+                    <p>“Записалась онлайн — приехала в назначенное время. Сделали за 28 минут. Дали гарантию. Очень удобно!”</p>
                 </div>
                 <div class="review-card">
-                    <div class="car-photo">
-                        <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=300" alt="BMW X5">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Максим">
+                        <div>
+                            <strong>Максим</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
                     </div>
-                    <div class="review-text">
-                        <strong>Елена, BMW X5</strong>
-                        <p>Поменяли резину + балансировка. Всё чисто, быстро. Цена: 2500₽. Кофе и Wi-Fi в зоне ожидания. Рекомендую!</p>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1583121274694-2d84aabe0633?auto=format&fit=crop&w=300&q=80" alt="Toyota Camry" class="car-image">
+                    <p>“Цена фикс — как на сайте. Мастер показал, что делает. Дали кофе. Теперь только сюда!”</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Контакты -->
-    <section class="contact" id="contact">
+    <section class="contact">
         <div class="container contact-wrapper">
             <div class="contact-info">
-                <h2>📍 Мы на Колесной, 8</h2>
-                <p>Работаем ежедневно с 8:00 до 22:00</p>
-                <a href="#" class="btn btn-map" id="build-route">Построить маршрут</a>
-                <div class="contact-methods">
-                    <a href="tel:+79991234567" class="method-item">
-                        <i class="fas fa-phone"></i> +7 (999) 123-45-67
-                    </a>
-                    <a href="https://wa.me/79991234567" class="method-item" target="_blank">
-                        <i class="fab fa-whatsapp"></i> WhatsApp
-                    </a>
-                    <a href="https://t.me/yourtelegram" class="method-item" target="_blank">
-                        <i class="fab fa-telegram"></i> Telegram
-                    </a>
-                </div>
+                <h2>📍 Адрес</h2>
+                <p>г. Москва, ул. Колесная, 8</p>
+                <p>Работаем: <strong>ежедневно 8:00–22:00</strong></p>
+                <a href="#" class="btn btn-outline" id="route-btn">Построить маршрут</a>
             </div>
             <div class="contact-map">
                 <div class="map-placeholder">
@@ -170,19 +224,25 @@
                 <div class="footer-logo">
                     Шиномонтажка <span>008</span>
                 </div>
-                <a href="https://wa.me/79991234567" class="btn btn-footer" target="_blank">
-                    📲 Записаться в WhatsApp — мест осталось мало!
+                <a href="#booking" class="btn btn-glow btn-lg">
+                    <i class="far fa-calendar-alt"></i> Записаться онлайн — мест осталось мало!
                 </a>
-                <p class="footer-note">Фикс цена. Гарантия 6 месяцев. Работаем до 22:00.</p>
+                <div class="footer-links">
+                    <a href="#how-it-works">Как работает</a>
+                    <a href="#prices">Цены</a>
+                    <a href="#reviews">Отзывы</a>
+                    <a href="#contact">Контакты</a>
+                </div>
+                <div class="footer-socials">
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+                <p class="footer-note">© 2025 Шиномонтажка 008. Гарантия 6 месяцев. Фикс цена. Без скрытых платежей.</p>
             </div>
         </div>
     </footer>
-
-    <!-- Onboarding подсветка -->
-    <div class="onboarding-tooltip" id="onboarding" style="display:none;">
-        <p>Нажмите здесь, чтобы записаться за 10 секунд →</p>
-        <div class="arrow"></div>
-    </div>
 
     <script src="script.js"></script>
 </body>
