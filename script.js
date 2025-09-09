@@ -1,4 +1,4 @@
-// Параллакс для видео в герое
+// Параллакс
 window.addEventListener('scroll', function() {
     const parallax = document.querySelector('.parallax');
     if (parallax) {
@@ -7,20 +7,40 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Анимация блока "Как это работает" при скролле
-function animateSteps() {
-    const steps = document.querySelectorAll('.step-card');
+// Анимация блоков при скролле
+function animateOnScroll() {
+    const elements = document.querySelectorAll('.step-card, .stat-card');
     const triggerBottom = window.innerHeight * 0.8;
 
-    steps.forEach(step => {
-        const stepTop = step.getBoundingClientRect().top;
-        if (stepTop < triggerBottom) {
-            step.classList.add('animate');
+    elements.forEach(el => {
+        const elTop = el.getBoundingClientRect().top;
+        if (elTop < triggerBottom) {
+            el.classList.add('animate');
         }
     });
 }
 
-// Таймер в шапке (до 21:00)
+// Анимация статистики
+function animateStats() {
+    const statItems = document.querySelectorAll('.stat-number');
+    statItems.forEach(item => {
+        const target = +item.getAttribute('data-target');
+        let count = 0;
+        const duration = 2000;
+        const step = target / (duration / 16);
+
+        const timer = setInterval(() => {
+            count += step;
+            if (count >= target) {
+                count = target;
+                clearInterval(timer);
+            }
+            item.textContent = Math.floor(count);
+        }, 16);
+    });
+}
+
+// Таймер в шапке
 function startHeaderTimer() {
     const timerElement = document.getElementById('header-timer');
     if (!timerElement) return;
@@ -47,7 +67,27 @@ function startHeaderTimer() {
     setInterval(updateTimer, 1000);
 }
 
-// Показ срочной записи (если после 18:00 и есть свободные слоты)
+// Мигающая горячая линия
+function initHotlineBlink() {
+    let inactivityTimer;
+    function resetTimer() {
+        clearTimeout(inactivityTimer);
+        const hotline = document.getElementById('hotline-blink');
+        if (hotline) hotline.classList.remove('blink');
+
+        inactivityTimer = setTimeout(() => {
+            if (hotline) hotline.classList.add('blink');
+        }, 5000);
+    }
+
+    ['mousemove', 'keypress', 'touchstart', 'scroll'].forEach(event => {
+        document.addEventListener(event, resetTimer);
+    });
+
+    resetTimer();
+}
+
+// Срочная запись
 function checkUrgentBooking() {
     const now = new Date();
     const urgentBox = document.getElementById('urgent-booking');
@@ -78,7 +118,7 @@ function checkUrgentBooking() {
     }
 }
 
-// Инициализация онлайн-записи
+// Онлайн-запись
 function initBooking() {
     const dateInput = document.getElementById('booking-date');
     const timeSelect = document.getElementById('booking-time');
@@ -87,12 +127,14 @@ function initBooking() {
     const loadingSpinner = document.getElementById('loading-spinner');
     const returningUser = document.getElementById('returning-user');
     const existingBooking = document.getElementById('existing-booking');
+    const thankyouPopup = document.getElementById('popup-thankyou');
+    const thankyouDate = document.getElementById('thankyou-date');
+    const thankyouTime = document.getElementById('thankyou-time');
+    const closeThankyou = document.getElementById('close-thankyou');
 
-    // Установка минимальной даты — сегодня
     const today = new Date().toISOString().split('T')[0];
     dateInput.min = today;
 
-    // Проверка, есть ли уже запись у пользователя
     function checkExistingBooking() {
         const phone = localStorage.getItem('lastPhone');
         if (!phone) return;
@@ -108,7 +150,6 @@ function initBooking() {
         }
     }
 
-    // Генерация временных слотов (09:00–21:00, шаг 30 мин)
     function generateTimeSlots() {
         loadingSpinner.style.display = 'flex';
         timeSelect.innerHTML = '<option value="">— Загрузка... —</option>';
@@ -144,12 +185,11 @@ function initBooking() {
             if (slotCount === 0) {
                 timeSelect.innerHTML = '<option value="">Нет свободных мест</option>';
             }
-        }, 800); // Имитация загрузки
+        }, 800);
     }
 
     dateInput.addEventListener('change', generateTimeSlots);
 
-    // Обработка отправки формы
     submitBtn.addEventListener('click', async function(e) {
         e.preventDefault();
 
@@ -158,21 +198,8 @@ function initBooking() {
         const date = dateInput.value;
         const time = timeSelect.value;
 
-        // Валидация
-        if (!name) {
-            showError('Пожалуйста, введите ваше имя.');
-            return;
-        }
-        if (!phone) {
-            showError('Пожалуйста, введите ваш телефон.');
-            return;
-        }
-        if (!date) {
-            showError('Пожалуйста, выберите дату.');
-            return;
-        }
-        if (!time || time === 'Нет свободных мест') {
-            showError('Пожалуйста, выберите доступное время.');
+        if (!name || !phone || !date || !time || time === 'Нет свободных мест') {
+            showError('Пожалуйста, заполните все поля корректно.');
             return;
         }
 
@@ -184,12 +211,10 @@ function initBooking() {
             return;
         }
 
-        // Сохраняем локально
         bookedSlots[slotKey] = { name, phone, date, time };
         localStorage.setItem('bookedSlots', JSON.stringify(bookedSlots));
         localStorage.setItem('lastPhone', phone);
 
-        // Отправляем на сервер для SMS и Telegram
         try {
             const response = await fetch('https://your-server.com/api/booking', {
                 method: 'POST',
@@ -206,17 +231,21 @@ function initBooking() {
             });
 
             if (response.ok) {
-                // Обновляем UI
                 updateSlotsCounter();
                 showSuccess(`Вы записаны на ${date} в ${time}!`);
 
-                // Открываем WhatsApp для подтверждения
-                const message = `Привет! Я записался на ${date} в ${time} через сайт Шиномонтажка 008. Подтвердите, пожалуйста!`;
+                // Показываем попап "Спасибо"
+                thankyouDate.textContent = date;
+                thankyouTime.textContent = time;
+                thankyouPopup.style.display = 'flex';
+
+                // Открываем WhatsApp
+                const message = `Привет! Я записался на ${date} в ${time} через сайт. Подтвердите, пожалуйста!`;
                 setTimeout(() => {
                     window.open(`https://wa.me/79991234567?text=${encodeURIComponent(message)}`, '_blank');
-                }, 1500);
+                }, 2000);
 
-                // Воспроизведение звука успеха
+                // Звук
                 const sound = document.getElementById('success-sound');
                 sound.currentTime = 0;
                 sound.play().catch(e => console.log("Audio play failed:", e));
@@ -235,7 +264,6 @@ function initBooking() {
         }
     });
 
-    // Вспомогательные функции
     function showError(message) {
         resultDiv.className = 'error';
         resultDiv.innerHTML = `❌ ${message}`;
@@ -245,16 +273,22 @@ function initBooking() {
 
     function showSuccess(message) {
         resultDiv.className = 'success';
-        resultDiv.innerHTML = `✅ ${message}<br>Через 1 секунду откроем WhatsApp для подтверждения.`;
+        resultDiv.innerHTML = `✅ ${message}<br>Через 2 секунды откроем WhatsApp.`;
         resultDiv.style.display = 'block';
     }
 
-    // Инициализация
+    // Закрытие попапа
+    if (closeThankyou) {
+        closeThankyou.addEventListener('click', () => {
+            thankyouPopup.style.display = 'none';
+        });
+    }
+
     if (dateInput.value) generateTimeSlots();
     checkExistingBooking();
 }
 
-// Счётчик свободных слотов
+// Счётчик слотов
 function updateSlotsCounter() {
     const counter = document.getElementById('realtime-slots');
     const hotBadge = document.getElementById('hot-badge');
@@ -269,7 +303,7 @@ function updateSlotsCounter() {
         if (key.startsWith(todayStr)) bookedToday++;
     }
 
-    const totalSlots = 24; // 12 часов × 2 слота
+    const totalSlots = 24;
     const available = totalSlots - bookedToday;
     counter.textContent = Math.max(0, available);
 
@@ -280,13 +314,13 @@ function updateSlotsCounter() {
     }
 }
 
-// Открытие карты
+// Маршрут
 document.getElementById('route-btn')?.addEventListener('click', function(e) {
     e.preventDefault();
     window.open('https://yandex.ru/maps/?whatshere[point]=37.6176,55.7558&whatshere[zoom]=17', '_blank');
 });
 
-// Звук при наведении на кнопки
+// Звук при наведении
 document.addEventListener('DOMContentLoaded', function() {
     const clickSound = document.getElementById('click-sound');
     document.querySelectorAll('.btn, .contact-btn').forEach(btn => {
@@ -297,12 +331,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Инициализация всего при загрузке страницы
+// Инициализация
 window.addEventListener('DOMContentLoaded', function() {
-    animateSteps();
-    window.addEventListener('scroll', animateSteps);
+    animateOnScroll();
+    window.addEventListener('scroll', animateOnScroll);
+
+    const statsSection = document.querySelector('.why-us');
+    if (statsSection) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        observer.observe(statsSection);
+    }
 
     startHeaderTimer();
+    initHotlineBlink();
     checkUrgentBooking();
     initBooking();
     updateSlotsCounter();
