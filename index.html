@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru" id="html-root">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шиномонтажка 008 — Онлайн-запись ⚡ Гарантия 6 мес. Фикс цена.</title>
+    <title>Шиномонтажка 008 — №1 в Королёве ⚡ Запись за 10 сек</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>
+<body class="dark">
 
     <!-- Звуки -->
     <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3" preload="auto"></audio>
@@ -23,48 +23,25 @@
     <header class="header">
         <div class="container header-container">
             <div class="logo">Шиномонтажка <span>008</span></div>
-            <nav class="nav">
-                <a href="#how-it-works">Как работает</a>
-                <a href="#why-us">Почему мы</a>
-                <a href="#prices">Цены</a>
-                <a href="#reviews">Отзывы</a>
-            </nav>
+            <div class="badge-top">🏆 ТОП-1 в Королёве</div>
             <div class="header-actions">
-                <button id="theme-toggle" class="theme-toggle">
-                    <i class="fas fa-moon"></i>
-                </button>
-                <a href="#booking" class="btn btn-neon btn-sm">Записаться</a>
+                <a href="#booking" class="btn btn-primary">Записаться</a>
             </div>
         </div>
     </header>
 
-    <!-- Тикер клиентов -->
-    <div class="clients-ticker">
-        <div class="ticker-wrapper">
-            <div class="ticker-content" id="ticker-content">
-                <!-- Динамически заполняется -->
-            </div>
-        </div>
-    </div>
-
     <!-- Герой -->
     <section class="hero">
-        <div class="parallax">
-            <div class="hero-video-container">
-                <video autoplay muted loop playsinline>
-                    <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
-                </video>
-            </div>
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
+            </video>
+            <div class="hero-overlay"></div>
         </div>
-        <div class="hero-overlay"></div>
         <div class="container hero-content">
-            <div class="badges-row">
-                <div class="badge">ТОП-100 шиномонтажей Москвы</div>
-                <div class="badge">Рекомендуют 97%</div>
-                <div class="badge">Работаем с 2014</div>
-            </div>
+            <div class="badge-guarantee">ГАРАНТИЯ 6 МЕСЯЦЕВ</div>
             <h1>ШИНОМОНТАЖ<br><span>ЗА 30 МИНУТ</span></h1>
-            <p class="subtitle">Фикс цена. Никаких очередей. Кофе в подарок.</p>
+            <p class="subtitle">Фикс цена. Без очередей. Только для Королёва.</p>
             <div class="price-display">от <span>800 ₽</span></div>
             <div class="slots-counter">
                 <i class="fas fa-stopwatch"></i> Свободных слотов сегодня: <span id="realtime-slots">6</span> <span id="hot-badge"></span>
@@ -72,80 +49,33 @@
             <a href="#booking" class="btn btn-glow">
                 <i class="far fa-calendar-alt"></i> Забронировать время
             </a>
-            <div id="urgent-booking" style="display:none; margin-top:20px;" class="urgent-box">
-                <i class="fas fa-bolt"></i> Свободен прямо сейчас — <a href="#booking" class="btn btn-urgent">Записаться за 1 клик</a>
-            </div>
         </div>
     </section>
 
-    <!-- Почему выбирают нас -->
-    <section class="why-us" id="why-us">
+    <!-- Почему мы -->
+    <section class="why-us">
         <div class="container">
-            <h2 class="section-title">Почему нас выбирают?</h2>
-            <div class="why-us-slider">
-                <div class="why-us-track" id="why-us-track">
-                    <!-- Дублируем карточки для бесконечного скролла -->
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Скорость</h3>
-                        <p>Среднее время — 30 минут. Кофе в подарок.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Гарантия</h3>
-                        <p>6 месяцев на все виды работ. Без вопросов.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <h3>Цена</h3>
-                        <p>Фикс стоимость. Никаких скрытых платежей.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-users"></i></div>
-                        <h3>Опыт</h3>
-                        <p>10 лет на рынке. 5000+ довольных клиентов.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-star"></i></div>
-                        <h3>Отзывы</h3>
-                        <p>97% клиентов возвращаются к нам снова.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <h3>Удобно</h3>
-                        <p>Теплый бокс, Wi-Fi, парковка. Работаем до 21:00.</p>
-                    </div>
-                    <!-- Дубль для плавного скролла -->
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-bolt"></i></div>
-                        <h3>Скорость</h3>
-                        <p>Среднее время — 30 минут. Кофе в подарок.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-shield-alt"></i></div>
-                        <h3>Гарантия</h3>
-                        <p>6 месяцев на все виды работ. Без вопросов.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
-                        <h3>Цена</h3>
-                        <p>Фикс стоимость. Никаких скрытых платежей.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-users"></i></div>
-                        <h3>Опыт</h3>
-                        <p>10 лет на рынке. 5000+ довольных клиентов.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-star"></i></div>
-                        <h3>Отзывы</h3>
-                        <p>97% клиентов возвращаются к нам снова.</p>
-                    </div>
-                    <div class="why-us-card">
-                        <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
-                        <h3>Удобно</h3>
-                        <p>Теплый бокс, Wi-Fi, парковка. Работаем до 21:00.</p>
-                    </div>
+            <h2 class="section-title">Почему нас выбирают в Королёве?</h2>
+            <div class="why-grid">
+                <div class="why-item">
+                    <div class="icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Скорость</h3>
+                    <p>30 минут — и вы на колёсах. Кофе в подарок.</p>
+                </div>
+                <div class="why-item">
+                    <div class="icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Гарантия</h3>
+                    <p>6 месяцев на все работы. Без вопросов.</p>
+                </div>
+                <div class="why-item">
+                    <div class="icon"><i class="fas fa-money-bill-wave"></i></div>
+                    <h3>Цена</h3>
+                    <p>Фикс стоимость. Никаких скрытых платежей.</p>
+                </div>
+                <div class="why-item">
+                    <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <h3>Королёв</h3>
+                    <p>Работаем только здесь. Знаем каждый двор.</p>
                 </div>
             </div>
         </div>
@@ -157,46 +87,10 @@
             <div class="emergency-content">
                 <div class="icon"><i class="fas fa-car-crash"></i></div>
                 <div class="text">
-                    <h3>Срочный выезд на дорогу</h3>
-                    <p>Прокол, спущенное колесо, не можете доехать? Звоните — выезжаем в течение 30 минут!</p>
+                    <h3>Срочный выезд по Королёву</h3>
+                    <p>Прокол, спущенное колесо? Звоните — выезжаем в течение 30 минут!</p>
                 </div>
                 <a href="tel:+79991234567" class="btn btn-emergency">Помощь на дороге</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Как это работает -->
-    <section class="how-it-works" id="how-it-works">
-        <div class="container">
-            <h2 class="section-title">Как это работает?</h2>
-            <div class="steps-grid">
-                <div class="step-card">
-                    <div class="step-icon">
-                        <div class="icon-animate">
-                            <i class="fas fa-calendar-check"></i>
-                        </div>
-                    </div>
-                    <h3>Выберите дату и время</h3>
-                    <p>Онлайн — без звонков и ожидания. С 09:00 до 21:00.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <div class="icon-animate">
-                            <i class="fas fa-car-side"></i>
-                        </div>
-                    </div>
-                    <h3>Приезжайте точно в срок</h3>
-                    <p>Вас встретят — без очереди. Место в боксе уже готово.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-icon">
-                        <div class="icon-animate">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                    </div>
-                    <h3>Получите гарантию и чек</h3>
-                    <p>Работаем 30 минут. Даем гарантию 6 месяцев на всё.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -205,39 +99,60 @@
     <section class="prices" id="prices">
         <div class="container">
             <h2 class="section-title">Цены</h2>
-            <div class="prices-grid" id="prices-grid">
+            <div class="prices-grid">
                 <div class="price-card">
-                    <div class="price-top">
-                        <h3>Шиномонтаж</h3>
-                        <div class="price-tag">800 ₽</div>
-                    </div>
-                    <p>Всё включено: снятие, установка, вентили.</p>
+                    <h3>Шиномонтаж</h3>
+                    <div class="price-tag">800 ₽</div>
+                    <p>Снятие, установка, вентили — всё включено.</p>
                     <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <div class="price-top">
-                        <h3>Балансировка</h3>
-                        <div class="price-tag">500 ₽</div>
-                    </div>
-                    <p>На современном стенде Hunter.</p>
+                    <h3>Балансировка</h3>
+                    <div class="price-tag">500 ₽</div>
+                    <p>На современном стенде. Гарантия точности.</p>
                     <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <div class="price-top">
-                        <h3>Ремонт прокола</h3>
-                        <div class="price-tag">300 ₽</div>
-                    </div>
-                    <p>Гарантия на ремонт — 6 месяцев.</p>
+                    <h3>Ремонт прокола</h3>
+                    <div class="price-tag">300 ₽</div>
+                    <p>Гарантия 6 месяцев. Работаем с любыми повреждениями.</p>
                     <a href="#booking" class="btn btn-outline">Записаться</a>
                 </div>
                 <div class="price-card">
-                    <div class="price-top">
-                        <h3>Хранение шин</h3>
-                        <div class="price-tag">1500 ₽</div>
-                        <div class="price-sub">/сезон</div>
-                    </div>
-                    <p>Склад с климат-контролем и фотоотчётами.</p>
+                    <h3>Хранение шин</h3>
+                    <div class="price-tag">1500 ₽</div>
+                    <div class="price-sub">/сезон</div>
+                    <p>Склад с климат-контролем. Фотоотчёт после приёмки.</p>
                     <a href="#booking" class="btn btn-outline">Записаться</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews">
+        <div class="container">
+            <h2 class="section-title">Отзывы из Королёва</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=7" alt="Анна">
+                        <div>
+                            <strong>Анна, ул. Пионерская</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>“Поменяли резину за 28 минут. Мастер — профессионал. Теперь только сюда!”</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <img src="https://i.pravatar.cc/100?img=12" alt="Максим">
+                        <div>
+                            <strong>Максим, микрорайон Юбилейный</strong>
+                            <div class="stars">★★★★★</div>
+                        </div>
+                    </div>
+                    <p>“Цена как на сайте. Дали кофе. Показали, что делают. Рекомендую!”</p>
                 </div>
             </div>
         </div>
@@ -252,9 +167,6 @@
                     <div class="form-group">
                         <label>📅 Выберите дату</label>
                         <input type="date" id="booking-date" min="" required>
-                        <div id="loading-spinner" style="display:none; margin-top:10px;">
-                            <div class="spinner"></div> Загружаем свободные слоты...
-                        </div>
                     </div>
                     <div class="form-group">
                         <label>⏱ Выберите время (09:00–21:00)</label>
@@ -270,13 +182,10 @@
                         <label>📱 Ваш телефон</label>
                         <input type="tel" id="booking-phone" placeholder="+7 (999) 123-45-67" required>
                     </div>
-                    <button id="booking-submit" class="btn btn-neon btn-block">
-                        <i class="fas fa-check-circle"></i> Забронировать слот
+                    <button id="booking-submit" class="btn btn-primary btn-block">
+                        <i class="fas fa-check-circle"></i> Забронировать
                     </button>
                     <div id="booking-result" style="display:none; margin-top:20px; padding:15px; border-radius:10px;"></div>
-                    <div id="returning-user" style="display:none; margin-top:20px; padding:15px; background:rgba(5, 217, 232, 0.1); border:1px solid #05d9e8; border-radius:10px; color:#05d9e8; font-weight:600;">
-                        🎯 Вы уже записаны! Ждём вас <span id="existing-booking"></span>.
-                    </div>
                 </div>
                 <div class="booking-info">
                     <h3>Почему онлайн?</h3>
@@ -286,54 +195,6 @@
                         <li>✅ Напомним за час — не забудете</li>
                         <li>✅ Гарантия 6 месяцев на все работы</li>
                     </ul>
-                    <div class="info-note">
-                        <i class="fas fa-shield-alt"></i> Ваши данные защищены. Не передаются третьим лицам.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Отзывы -->
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <h2 class="section-title">Отзывы клиентов</h2>
-            <div class="reviews-slider">
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://i.pravatar.cc/100?img=7" alt="Анна">
-                        <div>
-                            <strong>Анна</strong>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=300&q=80" alt="BMW X5" class="car-image">
-                    <p>“Записалась онлайн — приехала в назначенное время. Сделали за 28 минут. Дали гарантию. Очень удобно!”</p>
-                </div>
-                <div class="review-card">
-                    <div class="review-header">
-                        <img src="https://i.pravatar.cc/100?img=12" alt="Максим">
-                        <div>
-                            <strong>Максим</strong>
-                            <div class="stars">★★★★★</div>
-                        </div>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1583121274694-2d84aabe0633?auto=format&fit=crop&w=300&q=80" alt="Toyota Camry" class="car-image">
-                    <p>“Цена фикс — как на сайте. Мастер показал, что делает. Дали кофе. Теперь только сюда!”</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Счётчик экономии -->
-    <section class="savings">
-        <div class="container">
-            <div class="savings-content">
-                <div class="icon"><i class="fas fa-piggy-bank"></i></div>
-                <div class="text">
-                    <div class="counter">
-                        Клиенты сэкономили <span id="savings-counter">0</span> ₽ с нами
-                    </div>
                 </div>
             </div>
         </div>
@@ -343,10 +204,10 @@
     <section class="contact">
         <div class="container contact-wrapper">
             <div class="contact-info">
-                <h2>📍 Адрес</h2>
-                <p>г. Москва, ул. Колесная, 8</p>
-                <p>Работаем: <strong>ежедневно 09:00–21:00</strong></p>
-                <a href="#" class="btn btn-outline" id="route-btn">Построить маршрут</a>
+                <h2>📍 Мы в Королёве</h2>
+                <p>ул. Колесная, 8</p>
+                <p>Ежедневно: 09:00–21:00</p>
+                <a href="#" class="btn btn-outline" id="route-btn">Построить маршрут до меня</a>
             </div>
             <div class="contact-map">
                 <div class="map-placeholder">
@@ -363,23 +224,12 @@
                 <div class="footer-logo">
                     Шиномонтажка <span>008</span>
                 </div>
-                <a href="#booking" class="btn btn-glow btn-lg">
-                    <i class="far fa-calendar-alt"></i> Записаться онлайн — мест осталось мало!
-                </a>
-                <div class="footer-links">
-                    <a href="#how-it-works">Как работает</a>
-                    <a href="#why-us">Почему мы</a>
-                    <a href="#prices">Цены</a>
-                    <a href="#reviews">Отзывы</a>
-                    <a href="#contact">Контакты</a>
+                <p>№1 в Королёве. Гарантия 6 месяцев. Фикс цена. Без скрытых платежей.</p>
+                <div class="footer-contacts">
+                    <a href="tel:+79991234567"><i class="fas fa-phone"></i> +7 (999) 123-45-67</a>
+                    <a href="https://wa.me/79991234567" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="https://t.me/yourtelegram" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
                 </div>
-                <div class="footer-socials">
-                    <a href="#"><i class="fab fa-vk"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </div>
-                <p class="footer-note">© 2025 Шиномонтажка 008. Гарантия 6 месяцев. Фикс цена. Без скрытых платежей.</p>
             </div>
         </div>
     </footer>
@@ -392,8 +242,7 @@
             </div>
             <h3>Спасибо за запись!</h3>
             <p>Мы ждём вас <span id="thankyou-date"></span> в <span id="thankyou-time"></span>.</p>
-            <p>Пожалуйста, оставьте отзыв после посещения — нам очень важно ваше мнение!</p>
-            <button class="btn btn-neon" id="close-thankyou">Закрыть</button>
+            <button class="btn btn-primary" id="close-thankyou">Закрыть</button>
         </div>
     </div>
 
