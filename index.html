@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Шиномонтажка 008 — Запись онлайн ⚡ Гарантия. Фикс цена.</title>
+    <title>Шиномонтажка 008 — Онлайн-запись ⚡ Гарантия 6 мес. Фикс цена.</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -12,6 +12,7 @@
 
     <!-- Звук -->
     <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3" preload="auto"></audio>
+    <audio id="success-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-alert-221.mp3" preload="auto"></audio>
 
     <!-- Шапка -->
     <header class="header">
@@ -24,8 +25,8 @@
                 <a href="#booking">Записаться</a>
             </nav>
             <div class="header-cta">
-                <div class="hotline">
-                    <i class="fas fa-bolt"></i> <strong>+7 (999) 123-45-67</strong>
+                <div class="promo-timer">
+                    <i class="fas fa-fire"></i> Акция до: <span id="header-timer">21:00:00</span>
                 </div>
                 <a href="#booking" class="btn btn-neon" id="main-cta">
                     <i class="far fa-calendar-alt"></i> Онлайн-запись
@@ -50,11 +51,14 @@
             <p class="subtitle">Фикс цена. Никаких очередей. Кофе в подарок.</p>
             <div class="price-display">от <span>800 ₽</span></div>
             <div class="slots-counter">
-                <i class="fas fa-stopwatch"></i> Свободных слотов сегодня: <span id="realtime-slots">3</span>
+                <i class="fas fa-stopwatch"></i> Свободных слотов сегодня: <span id="realtime-slots">6</span> <span id="hot-badge"></span>
             </div>
             <a href="#booking" class="btn btn-glow">
                 <i class="far fa-calendar-alt"></i> Забронировать время
             </a>
+            <div id="urgent-booking" style="display:none; margin-top:20px;" class="urgent-box">
+                <i class="fas fa-bolt"></i> Свободен прямо сейчас — <a href="#booking" class="btn btn-urgent">Записаться за 1 клик</a>
+            </div>
         </div>
     </section>
 
@@ -64,19 +68,31 @@
             <h2 class="section-title">Как это работает?</h2>
             <div class="steps-grid">
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-comment-dots"></i></div>
+                    <div class="step-icon">
+                        <div class="icon-animate">
+                            <i class="fas fa-calendar-check"></i>
+                        </div>
+                    </div>
                     <h3>Выберите дату и время</h3>
-                    <p>Онлайн — без звонков и ожидания.</p>
+                    <p>Онлайн — без звонков и ожидания. С 09:00 до 21:00.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-car"></i></div>
+                    <div class="step-icon">
+                        <div class="icon-animate">
+                            <i class="fas fa-car-side"></i>
+                        </div>
+                    </div>
                     <h3>Приезжайте точно в срок</h3>
-                    <p>Вас встретят — без очереди.</p>
+                    <p>Вас встретят — без очереди. Место в боксе уже готово.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-coffee"></i></div>
-                    <h3>Пейте кофе — мы сделаем всё за 30 минут</h3>
-                    <p>Получите чек и гарантию.</p>
+                    <div class="step-icon">
+                        <div class="icon-animate">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    <h3>Получите гарантию и чек</h3>
+                    <p>Работаем 30 минут. Даем гарантию 6 месяцев на всё.</p>
                 </div>
             </div>
         </div>
@@ -131,27 +147,33 @@
             <div class="booking-container">
                 <div class="booking-form">
                     <div class="form-group">
-                        <label>Выберите дату</label>
+                        <label>📅 Выберите дату</label>
                         <input type="date" id="booking-date" min="" required>
+                        <div id="loading-spinner" style="display:none; margin-top:10px;">
+                            <div class="spinner"></div> Загружаем свободные слоты...
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label>Выберите время</label>
+                        <label>⏱ Выберите время (09:00–21:00)</label>
                         <select id="booking-time" required>
                             <option value="">— Выберите время —</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Ваше имя</label>
+                        <label>👤 Ваше имя</label>
                         <input type="text" id="booking-name" placeholder="Иван" required>
                     </div>
                     <div class="form-group">
-                        <label>Ваш телефон</label>
+                        <label>📱 Ваш телефон</label>
                         <input type="tel" id="booking-phone" placeholder="+7 (999) 123-45-67" required>
                     </div>
                     <button id="booking-submit" class="btn btn-neon btn-block">
-                        <i class="fas fa-check-circle"></i> Забронировать
+                        <i class="fas fa-check-circle"></i> Забронировать слот
                     </button>
                     <div id="booking-result" style="display:none; margin-top:20px; padding:15px; border-radius:10px;"></div>
+                    <div id="returning-user" style="display:none; margin-top:20px; padding:15px; background:rgba(5, 217, 232, 0.1); border:1px solid #05d9e8; border-radius:10px; color:#05d9e8; font-weight:600;">
+                        🎯 Вы уже записаны! Ждём вас <span id="existing-booking"></span>.
+                    </div>
                 </div>
                 <div class="booking-info">
                     <h3>Почему онлайн?</h3>
@@ -206,7 +228,7 @@
             <div class="contact-info">
                 <h2>📍 Адрес</h2>
                 <p>г. Москва, ул. Колесная, 8</p>
-                <p>Работаем: <strong>ежедневно 8:00–22:00</strong></p>
+                <p>Работаем: <strong>ежедневно 09:00–21:00</strong></p>
                 <a href="#" class="btn btn-outline" id="route-btn">Построить маршрут</a>
             </div>
             <div class="contact-map">
