@@ -139,6 +139,36 @@ body {
     width: 100%;
 }
 
+/* Кнопки связи в шапке */
+.header-contacts {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+.contact-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.contact-btn.whatsapp {
+    background: #25D366;
+    color: white;
+}
+.contact-btn.telegram {
+    background: #0088cc;
+    color: white;
+}
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
 /* Герой */
 .hero {
     position: relative;
@@ -247,6 +277,30 @@ body {
 }
 .slots-counter i {
     margin-right: 10px;
+}
+
+/* Кнопки связи в герое */
+.hero-contacts {
+    margin-top: 30px;
+    text-align: center;
+}
+.hero-contacts p {
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+.hero-contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+.btn-whatsapp {
+    background: #25D366;
+    color: white;
+}
+.btn-telegram {
+    background: #0088cc;
+    color: white;
 }
 
 /* Как это работает */
@@ -628,6 +682,17 @@ body {
 .btn-lg {
     padding: 15px 40px;
     font-size: 1.2rem;
+}
+.footer-contacts {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.footer-btn {
+    padding: 12px 25px;
+    font-size: 1rem;
 }
 .footer-links {
     display: flex;
