@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Шиномонтажка 008 — №1 в Королёве ⚡ Запись за 10 сек</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body class="dark">
+<body class="light">
 
     <!-- Звуки -->
-    <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-modern-click-box-check-1120.mp3" preload="auto"></audio>
-    <audio id="success-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-notification-alert-221.mp3" preload="auto"></audio>
+    <audio id="hover-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-interface-click-1120.mp3" preload="auto"></audio>
+    <audio id="success-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-positive-interface-beep-221.mp3" preload="auto"></audio>
 
     <!-- Плавающая кнопка помощи -->
     <a href="https://wa.me/79991234567" class="floating-help" target="_blank">
@@ -22,7 +22,7 @@
     <!-- Шапка -->
     <header class="header">
         <div class="container header-container">
-            <div class="logo">Шиномонтажка <span>008</span></div>
+            <div class="logo" id="logo-easter">Шиномонтажка <span>008</span></div>
             <div class="badge-top">🏆 ТОП-1 в Королёве</div>
             <div class="header-actions">
                 <a href="#booking" class="btn btn-primary">Записаться</a>
@@ -30,15 +30,16 @@
         </div>
     </header>
 
-    <!-- Герой -->
+    <!-- Герой — Окно в мастерскую -->
     <section class="hero">
         <div class="hero-bg">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-car-wheel-close-up-1247-large.mp4" type="video/mp4">
-            </video>
+            <img src="https://images.unsplash.com/photo-1564951437208-32e831221e82?auto=format&fit=crop&w=1920" alt="Наш бокс">
             <div class="hero-overlay"></div>
         </div>
         <div class="container hero-content">
+            <div class="weather" id="weather-widget">
+                <i class="fas fa-cloud-sun"></i> <span id="weather-text">Загрузка погоды...</span>
+            </div>
             <div class="badge-guarantee">ГАРАНТИЯ 6 МЕСЯЦЕВ</div>
             <h1>ШИНОМОНТАЖ<br><span>ЗА 30 МИНУТ</span></h1>
             <p class="subtitle">Фикс цена. Без очередей. Только для Королёва.</p>
@@ -49,6 +50,19 @@
             <a href="#booking" class="btn btn-glow">
                 <i class="far fa-calendar-alt"></i> Забронировать время
             </a>
+        </div>
+    </section>
+
+    <!-- Цитата директора -->
+    <section class="director-quote">
+        <div class="container">
+            <div class="quote-content">
+                <img src="https://i.pravatar.cc/150?img=32" alt="Директор" class="director-photo">
+                <div class="quote-text">
+                    <p>“Я — директор Шиномонтажки 008. Каждый клиент для нас — как гость. Мы не просто меняем колёса — мы заботимся о вашей безопасности. Гарантирую: если что-то пойдёт не так — лично верну деньги и подарю бесплатную балансировку.”</p>
+                    <strong>— Артём, директор</strong>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -81,6 +95,33 @@
         </div>
     </section>
 
+    <!-- Наши мастера -->
+    <section class="masters">
+        <div class="container">
+            <h2 class="section-title">Вас встретят</h2>
+            <div class="masters-grid">
+                <div class="master-card">
+                    <img src="https://i.pravatar.cc/300?img=32" alt="Сергей">
+                    <h3>Сергей</h3>
+                    <p>Стаж: 8 лет</p>
+                    <p>Специализация: легковые авто</p>
+                </div>
+                <div class="master-card">
+                    <img src="https://i.pravatar.cc/300?img=15" alt="Дмитрий">
+                    <h3>Дмитрий</h3>
+                    <p>Стаж: 10 лет</p>
+                    <p>Специализация: внедорожники</p>
+                </div>
+                <div class="master-card">
+                    <img src="https://i.pravatar.cc/300?img=63" alt="Артём">
+                    <h3>Артём</h3>
+                    <p>Стаж: 6 лет</p>
+                    <p>Специализация: премиум авто</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Срочный выезд -->
     <section class="emergency">
         <div class="container">
@@ -91,6 +132,21 @@
                     <p>Прокол, спущенное колесо? Звоните — выезжаем в течение 30 минут!</p>
                 </div>
                 <a href="tel:+79991234567" class="btn btn-emergency">Помощь на дороге</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Прогресс-бар экономии -->
+    <section class="savings">
+        <div class="container">
+            <div class="savings-content">
+                <h3>Клиенты сэкономили с нами</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="savings-amount">
+                    <span id="savings-counter">0</span> ₽
+                </div>
             </div>
         </div>
     </section>
@@ -243,6 +299,15 @@
             <h3>Спасибо за запись!</h3>
             <p>Мы ждём вас <span id="thankyou-date"></span> в <span id="thankyou-time"></span>.</p>
             <button class="btn btn-primary" id="close-thankyou">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- Easter Egg Popup -->
+    <div class="popup-easter" id="easter-popup" style="display:none;">
+        <div class="popup-content">
+            <span class="close-easter">&times;</span>
+            <h3>🎁 Секретная скидка!</h3>
+            <p>Покажите это сообщение мастеру и получите <strong>10% скидку</strong> по коду: <strong>VIP008</strong></p>
         </div>
     </div>
 
